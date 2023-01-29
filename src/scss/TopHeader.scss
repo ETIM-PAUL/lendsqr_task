@@ -1,0 +1,86 @@
+$color: #213F7D;
+
+.container {
+  background: #FFFFFF;
+  box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+  padding: 20px;
+}
+
+.header_div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company_logo_search{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width:50%;
+}
+.input_container{
+  position: relative;
+  width: 300px;
+  background: #FFFFFF;
+  border: 1px solid $color;
+  border-radius: 8px;
+  padding:10px;
+}
+.icon-container {
+  padding: 12.5px;
+  background: #39CDCC;
+  position: absolute;
+    font-weight: 600;
+    right: 0;
+    top: 0;
+  border-radius: 0 8px 8px 0;
+  z-index: 2;
+  &:hover{
+    cursor: pointer;
+  }
+  .search-icon{
+    width: 15px;
+    padding:0 10px;
+    display: flex;
+    color: #FFFFFF;
+  }
+}
+.input-field {
+  border: none;
+  width:90%;
+  outline:none;
+  z-index: 1;
+  &::placeholder{
+    opacity: 0.2;
+  }
+}
+
+.other_links{
+  display:flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  .docs{
+    margin-right: 30px;
+    font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+text-decoration-line: underline;
+color: $color;
+  }
+  .notifications{
+    margin-right: 20px;
+  }
+  .profile_img{
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .username{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: $color;
+  }
+}

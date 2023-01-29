@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
+import SideBar from './components/SideBar';
 import TopHeader from './components/TopHeader';
 import { AuthContext } from './context/authContext';
 import SignInPage from './pages/SignInPage';
@@ -39,10 +40,22 @@ function App() {
 
   return (
     <div className="App">
-      {isAuthenticated && role === "admin" ? <TopHeader /> : null}
-      <div className="page-wrapper w-full h-full min-h-screen">
+      <div className={`${isAuthenticated ? "grid-container" : "block"}`}>
+        {isAuthenticated && role === "admin" ?
+          <div className="top_header">
+            <TopHeader />
+          </div>
+          : null}
+        {isAuthenticated && role === "admin" ?
+          <div className="sidebar">
+            <SideBar />
+          </div>
+          : null}
         {!localStorage.getItem("isAuthenticated")
-          ? renderRoutes("none")
+          ?
+          <div className="content">
+            renderRoutes("none")
+          </div>
           : renderRoutes(role)}
       </div>
       {/* <SnackBar /> */}
