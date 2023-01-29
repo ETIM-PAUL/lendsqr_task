@@ -1,6 +1,6 @@
 
 .top_header { grid-area: header; }
-.sidebar { grid-area: menu; height:100vh; }
+.sidebar { grid-area: menu; height:100vh;; overflow-y: scroll; box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04); }
 .content { grid-area: main;}
 
 .grid-container {
