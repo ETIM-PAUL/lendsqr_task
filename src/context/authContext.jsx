@@ -1,5 +1,15 @@
 import React, { createContext, useReducer } from "react";
 
+// type AppType = {
+//   globalMessage: string,
+//   isAuthenticated: boolean,
+//   role: string | null
+// }
+
+// interface Props {
+//   children: React.ReactNode;
+// }
+
 export const AuthContext = createContext();
 
 const initialState = {
@@ -17,7 +27,7 @@ const reducer = (state, action) => {
       };
     case "LOGIN":
       localStorage.setItem("role", "admin");
-      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("isAuthenticated", action.payload);
       return {
         ...state,
         isAuthenticated: localStorage.getItem("isAuthenticated"),

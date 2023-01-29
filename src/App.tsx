@@ -7,13 +7,13 @@ import SignInPage from './pages/SignInPage';
 import UserDetailsPage from './pages/UserDetailsPage';
 import UsersListPage from './pages/UsersListPage';
 
-function renderRoutes(role) {
+function renderRoutes(role: string) {
   switch (role) {
     case "admin":
       return (
         <Routes>
-          <Route exact path="/users" element={<UsersListPage />}></Route>
-          <Route exact path="/users/:id" element={<UserDetailsPage />}></Route>
+          <Route path="/users" element={<UsersListPage />}></Route>
+          <Route path="/users/:id" element={<UserDetailsPage />}></Route>
           {/* <Route
             path="*"
             exact element={<NotFoundPage />}
@@ -23,7 +23,7 @@ function renderRoutes(role) {
     default:
       return (
         <Routes>
-          <Route exact path="/login" element={<SignInPage />}></Route>
+          <Route path="/login" element={<SignInPage />}></Route>
           {/* <Route path="*" exact element={<NotFoundPage />}></Route> */}
           {/* <Route
             path="*"
@@ -35,15 +35,15 @@ function renderRoutes(role) {
 }
 
 function App() {
-  const { state } = useContext(AuthContext);
+  const { state: { role, isAuthenticated } } = useContext(AuthContext);
 
   return (
     <div className="App">
-      {state.isAuthenticated && state.role === "admin" ? <TopHeader /> : null}
+      {isAuthenticated && role === "admin" ? <TopHeader /> : null}
       <div className="page-wrapper w-full h-full min-h-screen">
         {!localStorage.getItem("isAuthenticated")
           ? renderRoutes("none")
-          : renderRoutes(localStorage.getItem("role"))}
+          : renderRoutes(role)}
       </div>
       {/* <SnackBar /> */}
     </div>

@@ -1,4 +1,4 @@
-export default function MkdSDK() {
+export default function MkdSDK(this: any) {
 
   this._baseurl = "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api";
 
@@ -21,7 +21,7 @@ export default function MkdSDK() {
     return json;
   };
 
-  this.getUsers = async function () {
+  this.getUsers = async function (id: number) {
     const result = await fetch(this._baseurl + `/v1/users/${id}`, {
       method: "get",
       headers: {
